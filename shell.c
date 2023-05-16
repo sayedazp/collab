@@ -14,7 +14,7 @@ int shellin(info_t *info, char **av)
 			if (info->cmd_buf_type == 0)
 				_puts("$ ");
 		}
-		//_eputchar(B_FLUSH);Sayed
+		_eputchar(B_FLUSH);
 		r = get_input(info);
 		if (r != -1)
 		{

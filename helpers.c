@@ -15,20 +15,6 @@ int _putchar(char c)
 	return (1);
 }
 
-int _eputchar(char c)
-{
-	static int i;
-	static char buf[WB_SIZE];
-
-	if (c == B_FLUSH || i >= WB_SIZE)
-	{
-		write(2, buf, i);
-		i = 0;
-	}
-	if (c != B_FLUSH)
-		buf[i++] = c;
-	return (1);
-}
 
 char *itoa(long int num, int base, int flags)
 {

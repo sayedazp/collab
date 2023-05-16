@@ -93,4 +93,9 @@ char *dup_chars(char *pathstr, int start, int stop);
 
 char **list_to_strings(list_node *head);
 char **get_environ(info_t *info);
+
+void print_error(info_t *info, char *estr);
+void _eputs(char *str);
+int _eputchar(char c);
+
 #endif

@@ -124,8 +124,8 @@ ssize_t get_input(info_t *info)
 
 void sigintHandler(__attribute__((unused))int sig_num)
 {
-	puts("\n");
-	puts("$ ");
+	
+	_puts("\n$ ");
 	_putchar(B_FLUSH);
 }
 
@@ -160,7 +160,7 @@ void find_cmd(info_t *info)
 		else if (*(info->arg) != '\n')
 		{
 			info->status = 127;
-			//print_error(info, "not found\n");
+			print_error(info, "command not found\n");
 		}
 	}
 }

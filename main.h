@@ -52,6 +52,15 @@ typedef struct passinfo
 	int histcount;
 } info_t;
 
+
+typedef struct builtin
+{
+	char *type;
+	int (*func)(info_t *);
+} builtin_table;
+
+
+
 int __getline(info_t *info, char **lineptr, size_t *n);
 void sigintHandler(__attribute__((unused))int sig_num);
 int _putchar(char c);
@@ -97,5 +106,8 @@ char **get_environ(info_t *info);
 void print_error(info_t *info, char *estr);
 void _eputs(char *str);
 int _eputchar(char c);
+
+int _theexit(info_t *info);
+int find_builtin(info_t *info);
 
 #endif

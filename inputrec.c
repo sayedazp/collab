@@ -166,6 +166,25 @@ void find_cmd(info_t *info)
 }
 
 
+int find_builtin(info_t *info)
+{
+	int i, built_in_ret = -1;
+	builtin_table builtintbl[] = {
+		{"exit", _theexit},
+		{NULL, NULL}
+	};
+
+	for (i = 0; builtintbl[i].type; i++)
+		if (strcmp(info->argv[0], builtintbl[i].type) == 0)
+		{
+			info->line_count++;
+			built_in_ret = builtintbl[i].func(info);
+			break;
+		}
+	return (built_in_ret);
+}
+
+
 void fork_cmd(info_t *info)
 {
 	pid_t child_pid;
@@ -199,3 +218,5 @@ void fork_cmd(info_t *info)
 		}
 	}
 }
+
+

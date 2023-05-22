@@ -95,6 +95,7 @@ void find_cmd(info_t *info);
 char *find_path(info_t *info, char *pathstr, char *cmd);
 
 char *_getenv(info_t *info, const char *name);
+int _setenv(info_t *info, char *var, char *value);
 
 int is_cmd(info_t *info, char *path);
 void fork_cmd(info_t *info);
@@ -109,5 +110,6 @@ int _eputchar(char c);
 
 int _theexit(info_t *info);
 int find_builtin(info_t *info);
+int _cd(info_t *info);
 
 #endif

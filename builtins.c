@@ -20,3 +20,50 @@ int _theexit(info_t *info)
 	}
 	return (-2);
 }
+/**
+ * _cd - changes the current directory of the process
+ * @info: Structure containing potential arguments. Used to maintain
+ * constant function prototype.
+ * Return: Always 0
+ */
+int _cd(info_t *info)
+{
+	char *the_dir, *k, buff[1024];
+	int ch_ind;
+
+	k = getcwd(buff, 1024);
+	if (!k)
+		_puts("TODO: >>getcwd failure emsg here<<\n");
+	if (info->argv[1] == NULL)
+	{
+		the_dir = _getenv(info, "HOME=");
+		if (!the_dir)
+			ch_ind = chdir((the_dir = _getenv(info, "PWD=")) ? the_dir : "/");
+		else
+			ch_ind = chdir(the_dir);
+	}
+	else if (strcmp(info->argv[1], "-") == 0)
+	{
+		if (!_getenv(info, "OLDPWD="))
+		{
+			_puts(k);
+			_putchar('\n');
+			return (1);
+		}
+		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
+		ch_ind = chdir((the_dir = _getenv(info, "OLDPWD=")) ? the_dir : "/");
+	}
+	else
+		ch_ind = chdir(info->argv[1]);
+	if (ch_ind == -1)
+	{
+		print_error(info, "can't cd to ");
+		_eputs(info->argv[1]), _eputchar('\n');
+	}
+	else
+	{
+		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
+		_setenv(info, "PWD", getcwd(buff, 1024));
+	}
+	return (0);
+}

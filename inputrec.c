@@ -171,6 +171,7 @@ int find_builtin(info_t *info)
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
 		{"exit", _theexit},
+		{"cd", _cd},
 		{NULL, NULL}
 	};
 

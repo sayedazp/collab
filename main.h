@@ -16,6 +16,9 @@
 #define WB_SIZE 1024
 #define B_FLUSH -1
 
+#define CMD_NORM	0
+#define CMD_CHAIN	3
+
 extern char **environ;
 
 #define BASE_INFO \
@@ -112,11 +115,14 @@ int _theexit(info_t *info);
 int find_builtin(info_t *info);
 int _cd(info_t *info);
 
-void ssree(char **pp);
+void ssfree(char **pp);
 
 void free_info(info_t *info);
 void ffree_info(info_t *info);
+void clear_info(info_t *info);
 int bfree(char **ptr);
 
+
+int is_chain(info_t *info, char *buf, size_t j);
 
 #endif

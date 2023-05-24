@@ -8,15 +8,11 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 
 	if (!*len) /* if nothing left in the buffer, fill it */
 	{
-		/*bfree((void **)info->cmd_buf);*/
+		bfree(info->cmd_buf);
 		free(*buf);
 		*buf = NULL;
 		signal(SIGINT, sigintHandler);
-#if 0
-		r = getline(buf, &len_p, stdin);
-#else
 		r = __getline(info, buf, &len_p);
-#endif
 		if (r > 0)
 		{
 			if ((*buf)[r - 1] == '\n')
@@ -25,13 +21,8 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 				r--;
 			}
 			info->linecount_flag = 1;
-			//remove_comments(*buf);sayed
-			//build_history_list(info, *buf, info->histcount++);sayed
-			/* if (_strchr(*buf, ';')) is this a command chain? */
-			{
-				*len = r;
-				info->cmd_buf = buf;
-			}
+			*len = r;
+			info->cmd_buf = buf;
 		}
 	}
 	return (r);
@@ -85,7 +76,7 @@ int __getline(info_t *info, char **lineptr, size_t *n)
 
 ssize_t get_input(info_t *info)
 {
-	static char *buf; /* the ';' command chain buffer */
+	static char *buf; 
 	static size_t i, j, len;
 	ssize_t r = 0;
 	char **buf_p = &(info->arg), *p;
@@ -99,11 +90,10 @@ ssize_t get_input(info_t *info)
 		j = i; /* init new iterator to current buf position */
 		p = buf + i; /* get pointer for return */
 
-		//sayedcheck_chain(info, buf, &j, i, len);
 		while (j < len) /* iterate to semicolon or end */
 		{
-			/*if (is_chain(info, buf, &j))
-				break;sayed*/
+			if (is_chain(info, buf, j))
+				break;
 			j++;
 		}
 
@@ -111,7 +101,7 @@ ssize_t get_input(info_t *info)
 		if (i >= len) /* reached end of buffer? */
 		{
 			i = len = 0; /* reset position and length */
-			info->cmd_buf_type = 0; //CMD_NORM; sayed
+			info->cmd_buf_type = CMD_NORM; //CMD_NORM; sayed
 		}
 
 		*buf_p = p; /* pass back pointer to current command position */

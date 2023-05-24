@@ -8,6 +8,8 @@
  *
  * Return: size of list
  */
+
+
 list_node *add_node(list_node **head, const char *str, int num)
 {
 	list_node *new_head;

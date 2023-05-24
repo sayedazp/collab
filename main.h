@@ -112,4 +112,11 @@ int _theexit(info_t *info);
 int find_builtin(info_t *info);
 int _cd(info_t *info);
 
+void ssree(char **pp);
+
+void free_info(info_t *info);
+void ffree_info(info_t *info);
+int bfree(char **ptr);
+
+
 #endif

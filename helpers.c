@@ -173,3 +173,14 @@ int is_cmd(info_t *info, char *path)
 	}
 	return (0);
 }
+
+void ssfree(char **pp)
+{
+	char **a = pp;
+
+	if (!pp)
+		return;
+	while (*pp)
+		free(*pp++);
+	free(a);
+}

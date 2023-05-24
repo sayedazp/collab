@@ -7,7 +7,7 @@ int main(int ac, char **av)
 
 
 	populate_env_list(info);
-	//read_history(info);
+	//read_history(info);to be deleted and all dependencies ie (lists num variable)
 	shellin(info, av);
 	return (EXIT_SUCCESS);
 }

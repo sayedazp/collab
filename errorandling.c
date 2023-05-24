@@ -54,12 +54,12 @@ int _eputchar(char c)
 	info_t tmpinf;
 	size_t length;
 
-	if (c == B_FLUSH || i >= WB_SIZE) 
+	if (c == B_FLUSH || i >= WB_SIZE)
 	{
-		write(2, buf, i);		
+		write(2, buf, i);
 		i = 0;
 	}
-	
+
 	if (c != B_FLUSH)
 		buf[i++] = c;
 	return (1);

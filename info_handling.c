@@ -44,6 +44,11 @@ void clear_info(info_t *info)
 	info->path = NULL;
 	info->argc = 0;
 }
+/**
+ * free_info - frees info_t struct fields
+ * @info: struct address
+ * Return: void
+ */
 
 void free_info(info_t *info)
 {
@@ -53,34 +58,34 @@ void free_info(info_t *info)
 }
 
 /**
- * free_info - frees info_t struct fields
+ * ffree_info - frees info_t struct fields
  * @info: struct address
  * no function return
  */
 
 void ffree_info(info_t *info)
 {
-    free_info(info);
-    if (!info->cmd_buf)
-        free(info->arg);
-    if (info->env)
-        free_list(&(info->env));
-    if (info->history)
-        free_list(&(info->history));
-    if (info->alias)
-        free_list(&(info->alias));
-    ssfree(info->environ);
-        info->environ = NULL;
-    bfree(info->cmd_buf);
-    /*if (info->readfd > 2)
-        close(info->readfd);*/
-//	_putchar(B_FLUSH);
+	/*
+	*need to delete
+	*/
+	free_info(info);
+	if (!info->cmd_buf)
+		free(info->arg);
+	if (info->env)
+		free_list(&(info->env));
+	if (info->history)
+		free_list(&(info->history));
+	if (info->alias)
+		free_list(&(info->alias));
+	ssfree(info->environ);
+	info->environ = NULL;
+	bfree(info->cmd_buf);
 }
 
 /**
  * bfree - frees info_t struct fields
  * @ptr: struct address
- * return 1 for free proccess or 0
+ * Return: 1 for free proccess or 0
  */
 
 int bfree(char **ptr)

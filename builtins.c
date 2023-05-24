@@ -19,10 +19,13 @@ int _theexit(info_t *info)
 		if (exit <= 255 && exit >= 0)
 		{
 			info->err_num = exit;
-		}else{
-			info -> err_num = 13;
 		}
-	}else
+		else
+		{
+			info->err_num = 13;
+		}
+	}
+	else
 	{
 		info->err_num = -1;
 	}

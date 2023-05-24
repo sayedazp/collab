@@ -1,10 +1,16 @@
 #include "main.h"
 
+/**
+ * is_chain - test if current char in buffer is a chain delimeter
+ * @info: the parameter struct
+ * @buf: the char buffer
+ * @j: current position in buf
+ *
+ * Return: 1 if chain delimeter, 0 otherwise
+ */
+
 int is_chain(info_t *info, char *buf, size_t j)
-{
-
-
-	
+{	
 	if (buf[j] == ';') /* found end of this command */
 	{
 		buf[j] = 0; /* replace semicolon with null */

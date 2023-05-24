@@ -1,5 +1,13 @@
 #include "main.h"
 
+/**
+ * print_error - prints an error message
+ * @info: the parameter & return info struct
+ * @estr: string containing specified error type
+ * Return: 0 if no numbers in string, converted number otherwise
+ *        -1 on error
+ */
+
 void print_error(info_t *info, char *estr)
 {
 	_eputs(info->fname);
@@ -8,6 +16,13 @@ void print_error(info_t *info, char *estr)
 	_eputs(": ");
 	_eputs(estr);
 }
+
+/**
+ * _eputs - prints an input string
+ * @str: the string to be printed
+ *
+ * Return: Nothing
+ */
 
 void _eputs(char *str)
 {
@@ -22,6 +37,13 @@ void _eputs(char *str)
 	}
 }
 
+/**
+ * _eputchar - writes the character c to stderr
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
 
 int _eputchar(char c)
 {

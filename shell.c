@@ -1,6 +1,13 @@
 #include "main.h"
 
-int shellin(info_t *info, char **av)
+/**
+ * shellin - main shelllin
+ * @info: the parameter & return info struct
+ * @av: the argument vector from main()
+ *
+ * Return: 0 on success, 1 on error, or error code
+ */
+int shellin(info_t *info, char **av)/*//////not understood */
 {
 	ssize_t r = 0;
 	int builtin_ret = 0;

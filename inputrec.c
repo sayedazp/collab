@@ -1,6 +1,15 @@
 #include "main.h"
 #include <unistd.h>
 
+/**
+ * input_buf - buffers chained commands
+ * @info: parameter struct
+ * @buf: address of buffer
+ * @len: address of len var
+ *
+ * Return: r
+ */
+
 ssize_t input_buf(info_t *info, char **buf, size_t *len)
 {
 	ssize_t r = 0;
@@ -27,6 +36,15 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 	}
 	return (r);
 }
+
+/**
+ * __getline - gets the next line of input from file discriptor
+ * @info: parameter struct
+ * @lineptr: address of pointer to buffer, preallocated or NULL
+ * @n: size of preallocated lineptr buffer if not NULL
+ *
+ * Return: number of char readed
+ */
 
 int __getline(info_t *info, char **lineptr, size_t *n)
 {
@@ -74,6 +92,13 @@ int __getline(info_t *info, char **lineptr, size_t *n)
 	return (count + r);
 }
 
+/**
+ * get_input - gets a line minus the newline
+ * @info: parameter struct
+ *
+ * Return: length of buffer from _getline()
+ */
+
 ssize_t get_input(info_t *info)
 {
 	static char *buf; 
@@ -112,12 +137,25 @@ ssize_t get_input(info_t *info)
 	return (r); /* return length of buffer from _getline() */
 }
 
+/**
+ * sigintHandler - blocks ctrl-C
+ * @sig_num: the signal number
+ *
+ * Return: void
+ */
 void sigintHandler(__attribute__((unused))int sig_num)
 {
 	
 	_puts("\n$ ");
 	_putchar(B_FLUSH);
 }
+
+/**
+ * find_cmd - finds a command in PATH
+ * @info: the parameter & return info struct
+ *
+ * Return: void
+ */
 
 void find_cmd(info_t *info)
 {
@@ -155,6 +193,12 @@ void find_cmd(info_t *info)
 	}
 }
 
+/**
+ * find_cmd - finds a command in PATH
+ * @info: the parameter & return info struct
+ *
+ * Return: void
+ */
 
 int find_builtin(info_t *info)
 {
@@ -175,7 +219,12 @@ int find_builtin(info_t *info)
 	return (built_in_ret);
 }
 
-
+/**
+ * fork_cmd - forks a an exec thread to run cmd
+ * @info: the parameter & return info struct
+ *
+ * Return: void
+ */
 void fork_cmd(info_t *info)
 {
 	pid_t child_pid;
@@ -209,5 +258,3 @@ void fork_cmd(info_t *info)
 		}
 	}
 }
-
-

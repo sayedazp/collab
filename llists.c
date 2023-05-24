@@ -1,5 +1,5 @@
 #include "main.h"
-
+/*///////// comleted*/
 /**
  * add_node - adds a node to the start of the list
  * @head: address of pointer to head node
@@ -8,7 +8,6 @@
  *
  * Return: size of list
  */
-
 
 list_node *add_node(list_node **head, const char *str, int num)
 {
@@ -43,6 +42,7 @@ list_node *add_node(list_node **head, const char *str, int num)
  *
  * Return: size of list
  */
+
 list_node *add_node_end(list_node **head, const char *str, int num)
 {
 	list_node *new_node, *node;
@@ -82,6 +82,7 @@ list_node *add_node_end(list_node **head, const char *str, int num)
  *
  * Return: size of list
  */
+
 size_t print_list_str(const list_node *h)
 {
 	size_t i = 0;
@@ -103,6 +104,7 @@ size_t print_list_str(const list_node *h)
  *
  * Return: 1 on success, 0 on failure
  */
+
 int delete_node_at_index(list_node **head, unsigned int index)
 {
 	list_node *node, *prev_node;
@@ -142,6 +144,7 @@ int delete_node_at_index(list_node **head, unsigned int index)
  *
  * Return: void
  */
+
 void free_list(list_node **head_ptr)
 {
 	list_node *node, *next_node, *head;
@@ -166,6 +169,7 @@ void free_list(list_node **head_ptr)
  *
  * Return: size of list
  */
+
 size_t list_len(const list_node *h)
 {
 	size_t i = 0;
@@ -184,6 +188,7 @@ size_t list_len(const list_node *h)
  *
  * Return: array of strings
  */
+
 char **list_to_strings(list_node *head)
 {
 	list_node *node = head;
@@ -221,15 +226,13 @@ char **list_to_strings(list_node *head)
  *
  * Return: size of list
  */
+
 size_t print_list(const list_node *h)
 {
 	size_t i = 0;
 
 	while (h)
 	{
-		puts(itoa(h->num, 10, 0));
-		putchar(':');
-		putchar(' ');
 		puts(h->str ? h->str : "(nil)");
 		puts("\n");
 		h = h->next;
@@ -246,6 +249,7 @@ size_t print_list(const list_node *h)
  *
  * Return: match node or null
  */
+
 list_node *node_starts_with(list_node *node, char *prefix, char c)
 {
 	char *p = NULL;
@@ -267,6 +271,7 @@ list_node *node_starts_with(list_node *node, char *prefix, char c)
  *
  * Return: index of node or -1
  */
+
 ssize_t get_node_index(list_node *head, list_node *node)
 {
 	size_t i = 0;

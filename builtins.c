@@ -1,5 +1,13 @@
 #include "main.h"
 
+/**
+ * _theexit - exits the shell
+ * @info: Structure containing potential arguments. Used to maintain
+ * constant function prototype.
+ * Return: exits with a given exit status
+ * (0) if info.argv[0] != "exit"
+ */
+
 int _theexit(info_t *info)
 {
 	int exit;
@@ -33,7 +41,7 @@ int _cd(info_t *info)
 
 	k = getcwd(buff, 1024);
 	if (!k)
-		_puts("TODO: >>getcwd failure emsg here<<\n");
+		_puts("No such directory\n");
 	if (info->argv[1] == NULL)
 	{
 		the_dir = _getenv(info, "HOME=");

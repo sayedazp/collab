@@ -1,5 +1,11 @@
 #include "main.h"
-
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
 int _putchar(char c)
 {
 	static int i;
@@ -44,6 +50,14 @@ char *itoa(long int num, int base, int flags)
 	return (ptr);
 }
 
+/**
+ * starts_with - checks if needle starts with haystack
+ * @haystack: string to search
+ * @needle: the substring to find
+ *
+ * Return: address of next char of haystack or NULL
+ */
+
 char *starts_with(const char *haystack, const char *needle)
 {
 	while (*needle)
@@ -51,7 +65,12 @@ char *starts_with(const char *haystack, const char *needle)
 			return (NULL);
 	return ((char *)haystack);
 }
-
+/**
+ * _puts - prints an input string
+ * @str: the string to be printed
+ *
+ * Return: No return
+ */
 void _puts(char *str)
 {
 	int i = 0;
@@ -65,6 +84,13 @@ void _puts(char *str)
 	}
 }
 
+/**
+ * is_delim - checks if character is a delimeter
+ * @c: the char to check
+ * @delim: the delimeter string
+ * Return: 1 if success, 0 if not success
+ */
+
 int is_delim(char c, char *delim)
 {
 	while (*delim)
@@ -72,7 +98,13 @@ int is_delim(char c, char *delim)
 			return (1);
 	return (0);
 }
-
+/**
+ * **strtow - splits a string into words. Repeat delimiters are ignored
+ * @str: the input string
+ * @d: the delimeter string
+ * Return: a pointer to an array of strings, or NULL on failure
+ */
+/*///////// not used*/
 char **strtow(char *str, char *d)
 {
 	int i, j, k, m, numwords = 0;
@@ -113,6 +145,14 @@ char **strtow(char *str, char *d)
 	s[j] = NULL;
 	return (s);
 }
+/**
+ * find_path - finds this cmd in the PATH string
+ * @info: the info struct
+ * @pathstr: the PATH string
+ * @cmd: the cmd to find
+ *
+ * Return: path if found or NULL
+ */
 char *find_path(info_t *info, char *pathstr, char *cmd)
 {
 	int i = 0, curr_pos = 0;
@@ -147,7 +187,14 @@ char *find_path(info_t *info, char *pathstr, char *cmd)
 	}
 	return (NULL);
 }
-
+/**
+ * dup_chars - duplicates characters
+ * @pathstr: the PATH string
+ * @start: starting index
+ * @stop: stopping index
+ *
+ * Return: pointer to new buffer
+ */
 char *dup_chars(char *pathstr, int start, int stop)
 {
 	static char buf[1024];
@@ -159,6 +206,13 @@ char *dup_chars(char *pathstr, int start, int stop)
 	buf[k] = 0;
 	return (buf);
 }
+/**
+ * is_cmd - determines if a file is an executable command
+ * @info: the info struct
+ * @path: path to the file
+ *
+ * Return: 1 if on success, 0 not success
+ */
 int is_cmd(info_t *info, char *path)
 {
 	struct stat st;
@@ -173,7 +227,10 @@ int is_cmd(info_t *info, char *path)
 	}
 	return (0);
 }
-
+/**
+ * ssfree - frees a string of strings
+ * @pp: string of strings
+ */
 void ssfree(char **pp)
 {
 	char **a = pp;

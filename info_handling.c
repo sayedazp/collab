@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * set_info - initializes info_t struct
+ * @info: struct address
+ * @av: argument vector
+ * no function return
+ */
+
 void set_info(info_t *info, char **av)
 {
 	int i = 0;
@@ -24,6 +31,11 @@ void set_info(info_t *info, char **av)
 	}
 }
 
+/**
+ * clear_info - initializes info_t struct
+ * @info: struct address
+ * no function return
+ */
 
 void clear_info(info_t *info)
 {
@@ -39,6 +51,12 @@ void free_info(info_t *info)
 	info->argv = NULL;
 	info->path = NULL;
 }
+
+/**
+ * free_info - frees info_t struct fields
+ * @info: struct address
+ * no function return
+ */
 
 void ffree_info(info_t *info)
 {
@@ -58,6 +76,12 @@ void ffree_info(info_t *info)
         close(info->readfd);*/
 //	_putchar(B_FLUSH);
 }
+
+/**
+ * bfree - frees info_t struct fields
+ * @ptr: struct address
+ * return 1 for free proccess or 0
+ */
 
 int bfree(char **ptr)
 {
